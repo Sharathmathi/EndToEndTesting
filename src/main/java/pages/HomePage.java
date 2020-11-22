@@ -22,5 +22,25 @@ public class HomePage extends PreAndPost{
 		click(locateElement("xpath", "//button[text()='View All']"));
 		return new AppLauncherPage(driver, test);
 	}
+	
+	public HomePage clickGlobalSvgICon() {
+		click(locateElement("xpath", "(//div[@data-aura-class='oneGlobalCreate'])//div"));
+		return this;
+	}
+	
+	public HomePage clickNewOpportunity() {
+		click(locateElement("xpath", "//span[@class='actionLabel' and text()='New Opportunity']"));
+		return this;
+	}
+	
+	public HomePage clickNewCase() {
+		click(locateElement("xpath", "//span[@class='actionLabel' and text()='New Case']"));
+		return this;
+	}
+	
+	public CreateAndPublish MobilePublisherLearnMore() {
+		click(locateElement("xpath", "//button[@title='Learn More']"));
+		return new CreateAndPublish(driver, test);
+	}
 
 }
