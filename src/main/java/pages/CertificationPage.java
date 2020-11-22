@@ -24,6 +24,7 @@ public class CertificationPage extends PreAndPost {
 		5. Platform App Builder
 	 */
 	
+	//Certificate
 	public CertificationPage getAdministratorCertificate() {
 		String adminText = getText(locateElement("link", "Administrator"));
 		if(adminText.equals("Administrator"))
