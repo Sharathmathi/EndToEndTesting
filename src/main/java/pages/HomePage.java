@@ -38,9 +38,9 @@ public class HomePage extends PreAndPost{
 		return this;
 	}
 	
-	public CreateAndPublish MobilePublisherLearnMore() {
+	public mobileCreateAndPublish MobilePublisherLearnMore() {
 		click(locateElement("xpath", "//button[@title='Learn More']"));
-		return new CreateAndPublish(driver, test);
+		return new mobileCreateAndPublish(driver, test);
 	}
 
 }
