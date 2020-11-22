@@ -22,5 +22,31 @@ public class HomePage extends PreAndPost{
 		click(locateElement("xpath", "//button[text()='View All']"));
 		return new AppLauncherPage(driver, test);
 	}
-
+	
+	public HomePage enterSubject() {
+		type(locateElement("xpath","//input[@role='textbox']"),"\"Bootcamp\"");
+		return this;
+	}
+	public HomePage selectContact() {
+		type(locateElement("xpath","//input[@title='Search Contacts']"),"Sarath M");
+		click(locateElement("xpath","//span[@title='\"Sarath M\" in Contacts']"));
+		click(locateElement("//a[@title='Sarath M']"));
+		return this;
+	}
+	public HomePage selectStatus() {
+		click(locateElement("link","Not Started"));
+		click(locateElement("link","Waiting on someone else"));
+		return this;
+	}
+	public HomePage clickSave() {
+		click(locateElement("xpath","//div[@class='slds-grid bottomBar']//span"));
+		return this;
+	}
+	public HomePage verifyMessage() {
+		verifyExactText(locateElement("xpath","//span[text()=' was created.']"),"created");
+		return this;
+	}
+	
 }
+
+
