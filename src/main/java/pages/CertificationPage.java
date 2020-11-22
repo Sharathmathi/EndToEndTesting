@@ -44,8 +44,8 @@ public class CertificationPage extends PreAndPost {
 	}
 	
 	public CertificationPage getCPQSpecialistCertificate() {
-		String CPQText = getText(locateElement("link", "CPQ Specialist"));
-		if(CPQText.equals("CPQ Specialist"))
+		String cpqText = getText(locateElement("link", "CPQ Specialist"));
+		if(cpqText.equals("CPQ Specialist"))
 			System.out.println("CPQ Specialist Certification is  displayed");
 		else
 			System.out.println("CPQ Specialist Certification is not displayed");
@@ -53,8 +53,8 @@ public class CertificationPage extends PreAndPost {
 	}
 	
 	public CertificationPage getMarketingCertificate() {
-		String MCAdminText = getText(locateElement("link", "Marketing Cloud Administrator"));
-		if(MCAdminText.equals("Marketing Cloud Administrator"))
+		String mcaAdminText = getText(locateElement("link", "Marketing Cloud Administrator"));
+		if(mcaAdminText.equals("Marketing Cloud Administrator"))
 			System.out.println("Marketing Cloud Administrator Certification is  displayed");
 		else
 			System.out.println("Marketing Cloud Administrator Certification is not displayed");
@@ -62,8 +62,8 @@ public class CertificationPage extends PreAndPost {
 	}
 	
 	public CertificationPage getPlatformCertificate() {
-		String PABText = getText(locateElement("link", "Platform App Builder"));
-		if(PABText.equals("Platform App Builder"))
+		String pabText = getText(locateElement("link", "Platform App Builder"));
+		if(pabText.equals("Platform App Builder"))
 			System.out.println("Platform App Builder Certification is  displayed");
 		else
 			System.out.println("Platform App Builder Certification is not displayed");
