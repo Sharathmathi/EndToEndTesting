@@ -20,11 +20,10 @@ public class TC001 extends PreAndPost{
 	public void login() {
 		new LoginPage(driver, test)
 		.typeUserName("makaia@testleaf.com")
-		.typePassword("Bootcamp$123")
+		.typePassword(pwd)
 		.clickLogIn()
 		.clickAppLauncer()
-		.clickViewAll()
-		.clickService();
+		.clickViewAll();
 		
 	}
 	

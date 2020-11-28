@@ -19,7 +19,8 @@ import lib.utils.DataInputProvider;
 
 public class PreAndPost extends WebDriverServiceImpl{
 	
-	public String dataSheetName;		
+	public String dataSheetName;
+	public String pwd = "Bootcamp$123";
 	
 	@BeforeSuite
 	public void beforeSuite() {
