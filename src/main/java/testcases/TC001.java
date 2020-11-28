@@ -11,7 +11,7 @@ public class TC001 extends PreAndPost{
 	public void setData() {
 		testCaseName = "TC001";
 		testDescription = "Login Page";
-		authors = "sarath";
+		authors = "Babu";
 		category = "smoke";
 		nodes = "Service";
 	}
