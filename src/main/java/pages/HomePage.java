@@ -22,7 +22,7 @@ public class HomePage extends PreAndPost{
 		click(locateElement("xpath", "//button[text()='View All']"));
 		return new AppLauncherPage(driver, test);
 	}
-	
+		
 	public HomePage enterSubject() {
 		type(locateElement("xpath","//input[@role='textbox']"),"\"Bootcamp\"");
 		return this;
