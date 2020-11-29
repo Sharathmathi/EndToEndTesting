@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -21,6 +22,16 @@ public class HomePage extends PreAndPost{
 	public AppLauncherPage clickViewAll() {
 		click(locateElement("xpath", "//button[text()='View All']"));
 		return new AppLauncherPage(driver, test);
+	}
+	
+	public LeadsPage clickLead() {
+		/*		
+		WebElement eleLeads = driver.findElementByXPath("//span[text()='Leads']");
+		driver.executeScript("arguments[0].click()", eleLeads);
+		Thread.sleep(6000);
+		*/
+		jsClick(locateElement("xpath", "//span[text()='Leads']"));
+		return new LeadsPage(driver, test);
 	}
 
 }

@@ -3,6 +3,7 @@ package lib.selenium;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -39,7 +40,10 @@ public class PreAndPost extends WebDriverServiceImpl{
 		test.assignCategory(category);
 		
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-		webdriver = new ChromeDriver();
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-notifications");
+		webdriver = new ChromeDriver(options);		
 		driver = new EventFiringWebDriver(webdriver);
 		driver.register(this);
 		driver.manage().window().maximize();
