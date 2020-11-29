@@ -11,7 +11,7 @@ public class TC001 extends PreAndPost{
 	public void setData() {
 		testCaseName = "TC001";
 		testDescription = "Login Page";
-		authors = "sarath";
+		authors = "Babu";
 		category = "smoke";
 		nodes = "Service";
 	}
@@ -20,11 +20,10 @@ public class TC001 extends PreAndPost{
 	public void login() {
 		new LoginPage(driver, test)
 		.typeUserName("makaia@testleaf.com")
-		.typePassword("Bootcamp$123")
+		.typePassword(pwd)
 		.clickLogIn()
 		.clickAppLauncer()
-		.clickViewAll()
-		.clickService();
+		.clickViewAll();
 		
 	}
 	

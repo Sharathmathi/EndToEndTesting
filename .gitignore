@@ -4,3 +4,6 @@
 .settings/
 reports/
 test-output/
+.classpath
+.project
+.settings/
