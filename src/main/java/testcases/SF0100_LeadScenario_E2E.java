@@ -10,7 +10,7 @@ public class SF0100_LeadScenario_E2E extends PreAndPost{
 
 	@BeforeTest
 	public void setData() {
-		testCaseName="TC002_NewLead";
+		testCaseName="SFO100_LeadScenario E2E";
 		testDescription="Create New Lead";
 		authors="bharath";
 		category="Regression";
