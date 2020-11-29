@@ -24,6 +24,7 @@ public class HomePage extends PreAndPost{
 		return new AppLauncherPage(driver, test);
 	}
 	
+
 	public LeadsPage clickLead() {
 		/*		
 		WebElement eleLeads = driver.findElementByXPath("//span[text()='Leads']");
@@ -32,6 +33,27 @@ public class HomePage extends PreAndPost{
 		*/
 		jsClick(locateElement("xpath", "//span[text()='Leads']"));
 		return new LeadsPage(driver, test);
+	}
+
+	public HomePage clickGlobalSvgICon() {
+		click(locateElement("xpath", "(//div[@data-aura-class='oneGlobalCreate'])//div"));
+		return this;
+	}
+	
+	public HomePage clickNewOpportunity() {
+		click(locateElement("xpath", "//span[@class='actionLabel' and text()='New Opportunity']"));
+		return this;
+	}
+	
+	public HomePage clickNewCase() {
+		click(locateElement("xpath", "//span[@class='actionLabel' and text()='New Case']"));
+		return this;
+	}
+	
+	public mobileCreateAndPublish MobilePublisherLearnMore() {
+		click(locateElement("xpath", "//button[@title='Learn More']"));
+		return new mobileCreateAndPublish(driver, test);
+
 	}
 
 }
