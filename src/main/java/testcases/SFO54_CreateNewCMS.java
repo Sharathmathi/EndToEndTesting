@@ -19,8 +19,38 @@ public class SFO54_CreateNewCMS extends PreAndPost {
 
 	@Test
 	public void creatCMS() {
-		new LoginPage(driver, test).typeUserName("makaia@testleaf.com").typePassword("Bootcamp$123").clickLogIn()
-				.clickAppLauncer().clickViewAll().clickService();
+		new LoginPage(driver, test)
+		.typeUserName("makaia@testleaf.com")
+		.typePassword("Bootcamp$123")
+		.clickLogIn()
+		.clickAppLauncer()
+		.clickViewAll()
+		.clickCMS()
+		.clickCreateCMSWorkspaces()
+		.typeCMSName("CMS Name 10")
+		.typeCMSDescription("CMS Desc")
+		.clickNext()
+		.clickCreateChannel()
+		.typeChannelName("Channel Name")
+		.clickPublicConnectionType()
+		.clickCreate()
+		.verifyChannelCreation()
+		.clickAddChannels(1)
+		.clickNext()
+		.clickContributors(2)
+		.clickNext()
+		.selectIntegrationUserRole("Content Manager")
+		.selectSecurityUserRole("Content Admin")
+		.clickNext()
+		.selectTranslationLanguage("German")
+		.selectDefaultLanguage("German")
+		.clickNext()
+		.clickDone()
+		.verifyWorkSpaceCreation();
+		
+		
+		
+		
 
 	}
 

@@ -42,7 +42,7 @@ public class CMSPage extends PreAndPost {
 	}
 
 	public CMSPage typeChannelName(String chnlName) {
-		type(locateElement("xpath", "(//label/abbr//following::input)[1]"), chnlName);
+		type(locateElement("xpath", "//legend[text()='Connection Type']//preceding::input[1]"), chnlName);
 		return this;
 	}
 
@@ -68,16 +68,17 @@ public class CMSPage extends PreAndPost {
 		return this;
 	}
 
-	public CMSPage clickSinglePlusIcon(int index) {
+	public CMSPage clickAddChannels(int index) {
 		String locValue = "(//label[@class='slds-checkbox_faux'])[" + index + "]";
 		click(locateElement("xpath", locValue));
 		return this;
 	}
 
-	public CMSPage clickMultiplePlusIcon(int count) {
+	public CMSPage clickContributors(int count) {
+
 
 		for (int i = 1; i <= count; i++) {
-			String locValue = "(//label[@class='slds-checkbox_faux'])[" + i + "]";
+			String locValue = "((//div[@class='forceSelectableListViewSelectionColumn'])//label)[" + i + "]";
 			click(locateElement("xpath", locValue));
 		}
 
@@ -122,8 +123,11 @@ public class CMSPage extends PreAndPost {
 		String locValue;
 		locValue = "//h3[text()='Add Languages']//following::label[text()='Default Language']//following::span[text()='"
 				+ lang + "']";
+		scrollToElement(locateElement("xpath",
+				"//h3[text()='Add Languages']//following::label[text()='Default Language']//following::input[1]"));
 		click(locateElement("xpath",
 				"//h3[text()='Add Languages']//following::label[text()='Default Language']//following::input[1]"));
+				
 		click(locateElement("xpath", locValue));
 		return this;
 	}
@@ -134,8 +138,8 @@ public class CMSPage extends PreAndPost {
 	}
 
 	public CMSPage verifyWorkSpaceCreation() {
-		verifyExactText(locateElement("xpath", "//span[@data-aura-class='forceActionsText']"),
-				"Workspace successfully created	");
+		verifyPartialText(locateElement("xpath", "//span[@data-aura-class='forceActionsText']"),
+				"Workspace successfully created");
 		return this;
 	}
 }
