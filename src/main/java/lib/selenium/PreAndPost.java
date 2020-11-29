@@ -37,9 +37,11 @@ public class PreAndPost extends WebDriverServiceImpl {
 		test.assignCategory(category);
 
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+
+		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
-		webdriver = new ChromeDriver(options);
+		webdriver = new ChromeDriver(options);		
 		driver = new EventFiringWebDriver(webdriver);
 		driver.register(this);
 		driver.manage().window().maximize();

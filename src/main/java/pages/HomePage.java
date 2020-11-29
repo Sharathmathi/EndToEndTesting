@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -23,6 +24,17 @@ public class HomePage extends PreAndPost{
 		return new AppLauncherPage(driver, test);
 	}
 	
+
+	public LeadsPage clickLead() {
+		/*		
+		WebElement eleLeads = driver.findElementByXPath("//span[text()='Leads']");
+		driver.executeScript("arguments[0].click()", eleLeads);
+		Thread.sleep(6000);
+		*/
+		jsClick(locateElement("xpath", "//span[text()='Leads']"));
+		return new LeadsPage(driver, test);
+	}
+
 	public HomePage clickGlobalSvgICon() {
 		click(locateElement("xpath", "(//div[@data-aura-class='oneGlobalCreate'])//div"));
 		return this;
@@ -41,6 +53,7 @@ public class HomePage extends PreAndPost{
 	public mobileCreateAndPublish MobilePublisherLearnMore() {
 		click(locateElement("xpath", "//button[@title='Learn More']"));
 		return new mobileCreateAndPublish(driver, test);
+
 	}
 
 }

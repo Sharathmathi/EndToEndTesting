@@ -150,6 +150,24 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		}
 	}
+	
+	public void jsClick(WebElement ele) {
+		String text = "";
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.elementToBeClickable(ele));
+			text = ele.getText();
+			driver.executeScript("arguments[0].click()", ele);
+			reportStep("The element "+text+" is clicked", "PASS");
+			
+		}catch (InvalidElementStateException e) {
+			reportStep("The element: "+text+" could not be clicked", "FAIL");
+		} catch (WebDriverException e) {
+			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
+		} 
+		
+	}
 
 	public void clickWithNoSnap(WebElement ele) {
 		String text = "";
@@ -169,6 +187,8 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	public String getText(WebElement ele) {
 		String bReturn = "";
 		try {
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.visibilityOf(ele));
 			bReturn = ele.getText();
 		} catch (WebDriverException e) {
 			reportStep("The element: " + ele + " could not be found.", "FAIL");

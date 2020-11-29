@@ -5,6 +5,7 @@
     <classes>
       <class name="testcases.TC001"/>
       <class name="testcases.SFO54_CreateNewCMS"/>
+      <class name="testcases.SF0100_LeadScenario_E2E"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

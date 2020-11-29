@@ -4,6 +4,9 @@
 .settings/
 reports/
 test-output/
+<<<<<<< HEAD
+=======
 .classpath
 .project
 .settings/
+>>>>>>> f811564e70a3e46f6088528e7011eabc6f88dc0d

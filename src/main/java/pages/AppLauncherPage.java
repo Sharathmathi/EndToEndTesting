@@ -18,10 +18,18 @@ public class AppLauncherPage extends PreAndPost {
 		return new ServicePage(driver, test);
 	}
 
+	
+	public HomePage clickSales() {
+		click(locateElement("xpath", "//p[text()='Sales']"));
+		return new HomePage(driver, test);
+	}
+
+
 	public CMSPage clickCMS() {
 		String locValue = "//span[@class='slds-truncate label-display']//p[text()='CMS Home']";
 		scrollToElement(locateElement("xpath", locValue));
 		click(locateElement("xpath", locValue));
 		return new CMSPage(driver, test);
+
 	}
 }
