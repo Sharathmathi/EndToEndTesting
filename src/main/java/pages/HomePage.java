@@ -22,6 +22,19 @@ public class HomePage extends PreAndPost{
 		click(locateElement("xpath", "//button[text()='View All']"));
 		return new AppLauncherPage(driver, test);
 	}
+	
+	public HomePage clickSVGIcon()
+	{
+		click(locateElement("xpath","(//div[@data-aura-class='oneGlobalCreate'])//div"));
+		return this;
+	}
+	
+	
+	public HomePage clickNewTask()
+	{
+		click(locateElement("xpath","//span[text()='New Task']"));
+		return this;
+	}
 		
 	public HomePage enterSubject() {
 		type(locateElement("xpath","//input[@role='textbox']"),"\"Bootcamp\"");
@@ -29,8 +42,8 @@ public class HomePage extends PreAndPost{
 	}
 	public HomePage selectContact() {
 		type(locateElement("xpath","//input[@title='Search Contacts']"),"Sarath M");
-		click(locateElement("xpath","//span[@title='\"Sarath M\" in Contacts']"));
-		click(locateElement("//a[@title='Sarath M']"));
+		click(locateElement("xpath","//div[@title='Sarath M']"));
+		//click(locateElement("//a[@title='Sarath M']"));
 		return this;
 	}
 	public HomePage selectStatus() {
@@ -43,7 +56,7 @@ public class HomePage extends PreAndPost{
 		return this;
 	}
 	public HomePage verifyMessage() {
-		verifyExactText(locateElement("xpath","//span[text()=' was created.']"),"created");
+		verifyPartialText(locateElement("xpath","//span[text()=' was created.']"),"created");
 		return this;
 	}
 	

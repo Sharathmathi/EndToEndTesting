@@ -18,4 +18,10 @@ public class AppLauncherPage extends PreAndPost{
 		return new ServicePage(driver, test);
 	}
 	
+	public SalesPage clickSales()
+	{
+		click(locateElement("xpath","//p[text()='Sales']"));
+		return new SalesPage(driver,test);
+	}
+	
 }
