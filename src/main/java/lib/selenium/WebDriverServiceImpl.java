@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -137,6 +138,11 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		}
 	}
 
+	public int RandomNumberGenerate() {
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(1000);
+		return randomInt;	
+	}
 	public void click(WebElement ele) {
 		String text = "";
 		try {
@@ -151,7 +157,7 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		}
 	}
-	
+
 	public void jsClick(WebElement ele) {
 		String text = "";
 
@@ -161,13 +167,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			text = ele.getText();
 			driver.executeScript("arguments[0].click()", ele);
 			reportStep("The element "+text+" is clicked", "PASS");
-			
+
 		}catch (InvalidElementStateException e) {
 			reportStep("The element: "+text+" could not be clicked", "FAIL");
 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		} 
-		
+
 	}
 
 	public void clickWithNoSnap(WebElement ele) {
@@ -268,11 +274,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 
 	public void verifyPartialText(WebElement ele, String expectedText) {
 		try {
-			if (getText(ele).contains(expectedText)) {
-				reportStep("The expected text contains the actual " + expectedText, "PASS");
-			} else {
-				reportStep("The expected text doesn't contain the actual " + expectedText, "FAIL");
-			}
+
+			if(getText(ele).contains(expectedText)) {
+
+				reportStep("The expected text contains the actual "+expectedText,"PASS");
+			}else {
+				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");}
+
 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		}
