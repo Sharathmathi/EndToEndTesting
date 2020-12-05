@@ -24,6 +24,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -103,9 +104,9 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 				if (browser.equalsIgnoreCase("chrome")) {
 					System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 					webdriver = new ChromeDriver();
-				} else {
+				} else if(browser.equalsIgnoreCase("firefox")) {
 					System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
-					// driver = new FirefoxDriver();
+					webdriver = new FirefoxDriver();
 				}
 			}
 			driver = new EventFiringWebDriver(webdriver);
