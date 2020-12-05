@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +26,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -104,9 +106,9 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 				if (browser.equalsIgnoreCase("chrome")) {
 					System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 					webdriver = new ChromeDriver();
-				} else {
+				} else if(browser.equalsIgnoreCase("firefox")) {
 					System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
-					// driver = new FirefoxDriver();
+					webdriver = new FirefoxDriver();
 				}
 			}
 			driver = new EventFiringWebDriver(webdriver);
@@ -137,6 +139,11 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		}
 	}
 
+	public int RandomNumberGenerate() {
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(1000);
+		return randomInt;	
+	}
 	public void click(WebElement ele) {
 		String text = "";
 		try {
@@ -151,7 +158,7 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		}
 	}
-	
+
 	public void jsClick(WebElement ele) {
 		String text = "";
 
@@ -161,13 +168,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			text = ele.getText();
 			driver.executeScript("arguments[0].click()", ele);
 			reportStep("The element "+text+" is clicked", "PASS");
-			
+
 		}catch (InvalidElementStateException e) {
 			reportStep("The element: "+text+" could not be clicked", "FAIL");
 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		} 
-		
+
 	}
 
 	public void clickWithNoSnap(WebElement ele) {
@@ -284,6 +291,7 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			} else {
 				reportStep("The expected text doesn't contain the actual " + expectedText, "FAIL");
 			}
+ 
 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		}
