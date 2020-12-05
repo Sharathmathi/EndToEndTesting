@@ -35,10 +35,10 @@ public class PreAndPost extends WebDriverServiceImpl {
 		startTestModule(nodes);// each data row -> one testcase
 		test.assignAuthor(authors);
 		test.assignCategory(category);
+		startApp("firefox");
 
+		/*commented on 5Dec for using multiple browser
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-
-		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		webdriver = new ChromeDriver(options);		
@@ -47,7 +47,7 @@ public class PreAndPost extends WebDriverServiceImpl {
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("URL"));
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+*/
 	}
 
 	@AfterMethod
