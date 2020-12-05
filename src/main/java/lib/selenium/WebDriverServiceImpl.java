@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -133,6 +134,11 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		}
 	}
 
+	public int RandomNumberGenerate() {
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(1000);
+		return randomInt;	
+	}
 	public void click(WebElement ele) {
 		String text = "";
 		try {
@@ -244,6 +250,7 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	public void verifyPartialText(WebElement ele, String expectedText) {
 		try {
 			if(getText(ele).contains(expectedText)) {
+				
 				reportStep("The expected text contains the actual "+expectedText,"PASS");
 			}else {
 				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");
