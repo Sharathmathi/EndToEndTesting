@@ -156,7 +156,7 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		}
 	}
-	
+
 	public void jsClick(WebElement ele) {
 		String text = "";
 
@@ -166,13 +166,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			text = ele.getText();
 			driver.executeScript("arguments[0].click()", ele);
 			reportStep("The element "+text+" is clicked", "PASS");
-			
+
 		}catch (InvalidElementStateException e) {
 			reportStep("The element: "+text+" could not be clicked", "FAIL");
 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while clicking in the field :", "FAIL");
 		} 
-		
+
 	}
 
 	public void clickWithNoSnap(WebElement ele) {
@@ -273,19 +273,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 
 	public void verifyPartialText(WebElement ele, String expectedText) {
 		try {
-<<<<<<< HEAD
+
 			if(getText(ele).contains(expectedText)) {
-				
+
 				reportStep("The expected text contains the actual "+expectedText,"PASS");
 			}else {
-				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");
-=======
-			if (getText(ele).contains(expectedText)) {
-				reportStep("The expected text contains the actual " + expectedText, "PASS");
-			} else {
-				reportStep("The expected text doesn't contain the actual " + expectedText, "FAIL");
->>>>>>> 296012eddf9fde916ccebf488d8dd5191bd7d460
-			}
+				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");}
+
 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		}
