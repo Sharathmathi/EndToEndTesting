@@ -6,6 +6,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import com.aventstack.extentreports.ExtentTest;
 
 import lib.selenium.PreAndPost;
+import lib.selenium.WebDriverServiceImpl;
 
 public class HomePage extends PreAndPost{
 	
@@ -54,6 +55,16 @@ public class HomePage extends PreAndPost{
 		click(locateElement("xpath", "//button[@title='Learn More']"));
 		return new mobileCreateAndPublish(driver, test);
 
+	}
+
+	public AccountsPage clickAccounts() {
+		jsClick(locateElement("xpath", "//span[text()='Accounts']"));
+		return new AccountsPage(driver, test);
+	}
+
+	public mobileCreateAndPublish clickLearnMore() {
+		// TODO Auto-generated method stub
+		return new mobileCreateAndPublish(driver, test);
 	}
 
 }
