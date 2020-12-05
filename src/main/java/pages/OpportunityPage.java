@@ -40,7 +40,7 @@ public class OpportunityPage extends PreAndPost{
 	}
 	public OpportunityPage verifyMessage()
 	{
-		verifyExactText(locateElement("xpath","//ul[@class='errorsList']/li[1]"),"required fields");
+		verifyPartialText(locateElement("xpath","//ul[@class='errorsList']/li[1]"),"required fields");
 		return this;
 	}
 	

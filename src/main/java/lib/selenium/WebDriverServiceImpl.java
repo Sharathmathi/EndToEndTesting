@@ -6,16 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -25,6 +26,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -85,6 +87,31 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		return null;
 	}
 
+	public List<WebElement> locateElements(String locator, String locValue) {
+
+		try {
+
+			switch (locator) {
+			case "id": return driver.findElements(By.id(locValue));
+
+			case "name": return driver.findElements(By.name(locValue));
+
+			case "class": return driver.findElements(By.className(locValue));
+
+			case "link" : return driver.findElements(By.linkText(locValue));
+
+			case "xpath": return driver.findElements(By.xpath(locValue));	
+
+			default:
+				break;
+			}
+		} catch (NoSuchElementException e) {
+			reportStep("The element with locator "+locator+" not found.","FAIL");
+		} catch (WebDriverException e) {
+			reportStep("Unknown exception occured while finding "+locator+" with the value "+locValue, "FAIL");
+		}
+		return null;
+	}
 	public WebElement locateElement(String locValue) {
 		return driver.findElement(By.id(locValue));
 	}
@@ -275,6 +302,8 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	public void verifyPartialText(WebElement ele, String expectedText) {
 		try {
 
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(ele));
 			if(getText(ele).contains(expectedText)) {
 
 				reportStep("The expected text contains the actual "+expectedText,"PASS");
@@ -285,6 +314,19 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		}
 	}
+	
+	public void verifyListContents(List<String> originalList, List<String> duplicateList) {
+		try {
+			if(originalList.equals(duplicateList)) {
+				reportStep("Elements are sorted in ascending order","PASS");
+			}else {
+				reportStep("Elements are not sorted in ascending order","FAIL");
+			}
+		} catch (WebDriverException e) {
+			reportStep("Unknown exception occured while verifying the list", "FAIL");
+		} 
+	}
+	
 
 	public void verifyExactAttribute(WebElement ele, String attribute, String value) {
 		try {
@@ -439,6 +481,22 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		}
 
 	}
+
+	
+	public void clickUsingJavascriptExecutor(WebElement ele)
+	{
+		try
+		{
+			driver.executeScript("arguments[0].click();", ele);
+			reportStep("The web element is clicked using executor","PASS");
+		}
+		catch(WebDriverException e)
+		{
+			reportStep("The web element could not be clicked using executor","FAIL");
+		}
+	}
+	
+	
 
 	@Override
 	public boolean verifyPartialTitle(String title) {
