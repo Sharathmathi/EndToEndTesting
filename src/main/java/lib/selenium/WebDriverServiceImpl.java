@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -253,7 +254,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	}
 
 	public void verifyExactText(WebElement ele, String expectedText) {
+		String text="";
 		try {
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOf(ele));
+			text = ele.getText();
+			reportStep("The element "+text+" is visible", "PASS");
+			
 			if (getText(ele).equals(expectedText)) {
 				reportStep("The text: " + getText(ele) + " matches with the value :" + expectedText, "PASS");
 			} else {
@@ -266,7 +273,12 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	}
 
 	public void verifyPartialText(WebElement ele, String expectedText) {
+		String text="";
 		try {
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOf(ele));
+			text = ele.getText();
+			reportStep("The element "+text+" is visible", "PASS");
 			if (getText(ele).contains(expectedText)) {
 				reportStep("The expected text contains the actual " + expectedText, "PASS");
 			} else {

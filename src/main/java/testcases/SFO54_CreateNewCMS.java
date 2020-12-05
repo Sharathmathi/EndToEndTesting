@@ -8,6 +8,7 @@ import pages.LoginPage;
 
 public class SFO54_CreateNewCMS extends PreAndPost {
 
+	
 	@BeforeTest
 	public void setData() {
 		testCaseName = "SFO54";
@@ -27,7 +28,7 @@ public class SFO54_CreateNewCMS extends PreAndPost {
 		.clickViewAll()
 		.clickCMS()
 		.clickCreateCMSWorkspaces()
-		.typeCMSName("CMS Name 10")
+		.typeCMSName("CMS Name " +Math.random())
 		.typeCMSDescription("CMS Desc")
 		.clickNext()
 		.clickCreateChannel()
