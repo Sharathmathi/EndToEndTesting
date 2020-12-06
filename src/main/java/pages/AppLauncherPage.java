@@ -19,9 +19,10 @@ public class AppLauncherPage extends PreAndPost {
 	}
 
 	
-	public HomePage clickSales() {
-		click(locateElement("xpath", "//p[text()='Sales']"));
-		return new HomePage(driver, test);
+	public HomePage clickSales()
+	{
+		click(locateElement("xpath","//p[text()='Sales']"));
+		return new HomePage(driver,test);
 	}
 
 
@@ -32,4 +33,5 @@ public class AppLauncherPage extends PreAndPost {
 		return new CMSPage(driver, test);
 
 	}
+
 }
