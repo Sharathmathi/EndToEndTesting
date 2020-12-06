@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 
 import lib.utils.DataInputProvider;
 
@@ -30,12 +31,13 @@ public class PreAndPost extends WebDriverServiceImpl {
 	}
 
 	@BeforeMethod
-	public void beforeMethod() {
+	@Parameters("browser")
+	public void beforeMethod(String browser) {
 		// for reports
 		startTestModule(nodes);// each data row -> one testcase
 		test.assignAuthor(authors);
 		test.assignCategory(category);
-		startApp("firefox");
+		startApp(browser);
 
 		/*commented on 5Dec for using multiple browser
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
@@ -60,7 +62,7 @@ public class PreAndPost extends WebDriverServiceImpl {
 		endResult();// write report
 	}
 
-	@DataProvider(name = "fetchData", indices = 0)
+	@DataProvider(name = "fetchData")
 	public Object[][] getData() {
 		return DataInputProvider.getSheet(dataSheetName);
 	}
