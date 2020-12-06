@@ -28,7 +28,7 @@ public class SFO54_CreateNewCMS extends PreAndPost {
 		.clickViewAll()
 		.clickCMS()
 		.clickCreateCMSWorkspaces()
-		.typeCMSName("CMS Name " +Math.random())
+		.typeCMSName("CMS Name " + Double.toString( Math.random()).substring(3, 6))
 		.typeCMSDescription("CMS Desc")
 		.clickNext()
 		.clickCreateChannel()
