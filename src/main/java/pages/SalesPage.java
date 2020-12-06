@@ -13,11 +13,7 @@ public class SalesPage extends PreAndPost{
 		this.driver = driver;
 		this.test = test;
 	}
-	public OpportunityPage clickOpportunities()
-	{
-		clickUsingJavascriptExecutor(locateElement("xpath","//span[text()='Opportunities']"));
-		return new OpportunityPage(driver,test);
-	}
+	
 	public SalesPage clickMore()
 	{
 		clickUsingJavascriptExecutor(locateElement("xpath","//span[@class='slds-p-right_small']"));
@@ -28,8 +24,8 @@ public class SalesPage extends PreAndPost{
 	{
 		clickUsingJavascriptExecutor(locateElement("xpath","//span[text()='Accounts'][1]"));
 		return new AccountsPage(driver,test);
-	}
-	
+	}	
+
 	public NewCasePage clickCase()
 	{
 		clickUsingJavascriptExecutor(locateElement("xpath","//span[text()='Cases']"));
@@ -39,4 +35,5 @@ public class SalesPage extends PreAndPost{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

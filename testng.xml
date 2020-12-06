@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" verbose="6">
-	<test thread-count="5" name="chromeTest">
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="testcases.SFO54_CreateNewCMS" />
-			<class name="testcases.SFO19_CreateAccount" />
-			<class name="testcases.SFO8_CustommerServiceOption" />
-		</classes>
-	</test> <!-- Test -->
 
-	<test thread-count="5" name="Firefoxtest">
-		<parameter name="browser" value="firefox" />
+<suite name="Suite" verbose="6" parallel="tests">
+	
+	<test thread-count="5" name="ChromeTest" >
+	<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="testcases.SFO54_CreateNewCMS" />
-			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
+			<!-- class name="testcases.TC001" /-->
+			<!-- class name="testcases.SFO54_CreateNewCMS" /-->
+			<class name="testcases.SF0100_LeadScenario_E2E" />
+			<!-- class name="testcases.SFO54_CreateNewCMS" /-->
+			<!-- class name="testcases.SFO19_CreateAccount" /-->
+			<!-- class name="testcases.SFO8_CustommerServiceOption" /-->
 		</classes>
-	</test> <!-- Test -->
-
+	</test> 
+	
+	<test thread-count="5" name="FirefoxTest" >
+	<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="testcases.SF0100_LeadScenario_E2E" />
+		</classes>
+	</test> 
 
 </suite> <!-- Suite -->

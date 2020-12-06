@@ -19,10 +19,10 @@ public class AppLauncherPage extends PreAndPost {
 	}
 
 	
-	public SalesPage clickSales()
+	public HomePage clickSales()
 	{
 		click(locateElement("xpath","//p[text()='Sales']"));
-		return new SalesPage(driver,test);
+		return new HomePage(driver,test);
 	}
 
 
