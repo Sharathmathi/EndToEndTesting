@@ -35,4 +35,8 @@ public class SalesPage extends PreAndPost{
 		clickUsingJavascriptExecutor(locateElement("xpath","//span[text()='Cases']"));
 		return new NewCasePage(driver,test);
 	}
+	public Object clickLead() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
