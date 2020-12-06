@@ -39,7 +39,7 @@ public class SFO54_CreateNewCMS_DataParameterized extends PreAndPost {
 		.clickViewAll()
 		.clickCMS()
 		.clickCreateCMSWorkspaces()
-		.typeCMSName(cName)
+		.typeCMSName(cName + Double.toString( Math.random()).substring(3, 6))
 		.typeCMSDescription( cDesc)
 		.clickNext()
 		.clickCreateChannel()
