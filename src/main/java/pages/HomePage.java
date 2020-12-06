@@ -14,7 +14,18 @@ public class HomePage extends PreAndPost{
 		this.driver = driver;
 		this.test = test;
 	}
-
+	
+	public OpportunityPage clickOpportunities()
+	{
+		clickUsingJavascriptExecutor(locateElement("xpath","//span[text()='Opportunities']"));
+		return new OpportunityPage(driver,test);
+	}
+	
+	public NewCasePage clickCase()
+	{
+		clickUsingJavascriptExecutor(locateElement("xpath","//span[text()='Cases']"));
+		return new NewCasePage(driver,test);
+	}
 	public HomePage clickAppLauncer() {
 		click(locateElement("class", "slds-icon-waffle"));
 		return this;
@@ -62,8 +73,6 @@ public class HomePage extends PreAndPost{
 		verifyPartialText(locateElement("xpath","//span[text()=' was created.']"),"created");
 		return this;
 	}
-
-
 
 	public LeadsPage clickLead() {
 		/*		

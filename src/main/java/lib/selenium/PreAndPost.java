@@ -28,7 +28,9 @@ public class PreAndPost extends WebDriverServiceImpl {
 
 	@BeforeMethod
 	@Parameters("browser")
+
  	public void beforeMethod(String browserName) {
+
 		// for reports
 		startTestModule(nodes);// each data row -> one testcase
 		test.assignAuthor(authors);

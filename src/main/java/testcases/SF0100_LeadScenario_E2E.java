@@ -15,13 +15,14 @@ public class SF0100_LeadScenario_E2E extends PreAndPost{
 		authors="bharath";
 		category="Regression";
 		nodes="Sales";
+		dataSheetName="Lead";
 	}
 	
-	@Test
-	public void newLead() {
+	@Test(dataProvider = "fetchData")
+	public void newLead(String username, String password, String salutation, String firstname, String lastname, String company, String title, String phonenumber, String email, String leadstatus) {
 		new LoginPage(driver, test)
-		.typeUserName("makaia@testleaf.com")
-		.typePassword("Bootcamp$123")
+		.typeUserName(username)
+		.typePassword(password)
 		.clickLogIn()
 		.clickAppLauncer()
 		.clickViewAll()
@@ -29,15 +30,15 @@ public class SF0100_LeadScenario_E2E extends PreAndPost{
 		.clickLead()
 		.clickNew()
 		.clickSalutation()
-		.selectSalutation("Mr.")
-		.typeFirstName("James")
-		.typeLastName("Allen")
-		.typeCompanyName("ABC")
-		.typeTitle("Business Analyst")
-		.typePhoneNumber("987654321")
-		.typeEmail("test@email.com")
+		.selectSalutation(salutation)
+		.typeFirstName(firstname)
+		.typeLastName(lastname)
+		.typeCompanyName(company)
+		.typeTitle(title)
+		.typePhoneNumber(phonenumber)
+		.typeEmail(email)
 		.clickLeadStatus()
-		.selectLeadStatus("Open - Not Contacted")
+		.selectLeadStatus(leadstatus)
 		.clickSaveLead();
 		
 	}
