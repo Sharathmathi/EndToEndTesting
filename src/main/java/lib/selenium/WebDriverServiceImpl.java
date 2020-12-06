@@ -26,7 +26,9 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -130,10 +132,14 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			else { // this is for local run
 				if (browser.equalsIgnoreCase("chrome")) {
 					System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-					webdriver = new ChromeDriver();
+					ChromeOptions options = new ChromeOptions();
+					options.addArguments("--disable-notifications");
+					webdriver = new ChromeDriver(options);
 				} else if(browser.equalsIgnoreCase("firefox")) {
 					System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
-					webdriver = new FirefoxDriver();
+					FirefoxOptions options = new FirefoxOptions();
+					options.addArguments("--disable-notifications");
+					webdriver = new FirefoxDriver(options);
 				}
 			}
 			driver = new EventFiringWebDriver(webdriver);
