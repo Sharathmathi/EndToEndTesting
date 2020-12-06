@@ -6,20 +6,32 @@ import org.testng.annotations.Test;
 import lib.selenium.PreAndPost;
 import pages.LoginPage;
 
-public class SFO54_CreateNewCMS extends PreAndPost {
+public class SFO54_CreateNewCMS_DataParameterized extends PreAndPost {
 
-	
+	 
 	@BeforeTest
 	public void setData() {
 		testCaseName = "SFO54";
+		browserName="FireFox";
 		testDescription = "Create New CMS";
 		authors = "Venkatesh";
 		category = "smoke";
 		nodes = "Service";
+		dataSheetName="CreateCMS";
+		
+		
 	}
 
-	@Test
-	public void creatCMS() {
+	@Test(dataProvider = "fetchData")
+	public void creatCMS(String cName, String cDesc, String chName, String lang) {
+		
+//		System.out.println("CMS Name" + cName);
+//		System.out.println("CMS Desc" + cDesc);
+//		System.out.println("Channel Name" + chName);
+//		System.out.println("CMS Lang" + lang);
+//		
+		
+
 		new LoginPage(driver, test)
 		.typeUserName("makaia@testleaf.com")
 		.typePassword("Bootcamp$123")
@@ -28,11 +40,11 @@ public class SFO54_CreateNewCMS extends PreAndPost {
 		.clickViewAll()
 		.clickCMS()
 		.clickCreateCMSWorkspaces()
-		.typeCMSName("CMS Name " +Math.random())
-		.typeCMSDescription("CMS Desc")
+		.typeCMSName(cName)
+		.typeCMSDescription( cDesc)
 		.clickNext()
 		.clickCreateChannel()
-		.typeChannelName("Channel Name")
+		.typeChannelName(chName)
 		.clickPublicConnectionType()
 		.clickCreate()
 		.verifyChannelCreation()
@@ -43,8 +55,8 @@ public class SFO54_CreateNewCMS extends PreAndPost {
 		.selectIntegrationUserRole("Content Manager")
 		.selectSecurityUserRole("Content Admin")
 		.clickNext()
-		.selectTranslationLanguage("German")
-		.selectDefaultLanguage("German")
+		.selectTranslationLanguage(lang)
+		.selectDefaultLanguage(lang)
 		.clickNext()
 		.clickDone()
 		.verifyWorkSpaceCreation();

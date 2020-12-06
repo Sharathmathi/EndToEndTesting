@@ -13,10 +13,10 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -26,7 +26,6 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -287,7 +286,13 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	}
 
 	public void verifyExactText(WebElement ele, String expectedText) {
+		String text="";
 		try {
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOf(ele));
+			text = ele.getText();
+			reportStep("The element "+text+" is visible", "PASS");
+			
 			if (getText(ele).equals(expectedText)) {
 				reportStep("The text: " + getText(ele) + " matches with the value :" + expectedText, "PASS");
 			} else {
@@ -300,17 +305,18 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 	}
 
 	public void verifyPartialText(WebElement ele, String expectedText) {
+		String text="";
 		try {
-
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			wait.until(ExpectedConditions.elementToBeClickable(ele));
-			if(getText(ele).contains(expectedText)) {
-
-				reportStep("The expected text contains the actual "+expectedText,"PASS");
-			}else {
-				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");}
-
-		} catch (WebDriverException e) {
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOf(ele));
+			text = ele.getText();
+			reportStep("The element "+text+" is visible", "PASS");
+			if (getText(ele).contains(expectedText)) {
+				reportStep("The expected text contains the actual " + expectedText, "PASS");
+			} else {
+				reportStep("The expected text doesn't contain the actual " + expectedText, "FAIL");
+			}
+ 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		}
 	}

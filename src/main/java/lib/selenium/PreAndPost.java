@@ -1,10 +1,5 @@
 package lib.selenium;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -18,6 +13,7 @@ public class PreAndPost extends WebDriverServiceImpl {
 
 	public String dataSheetName;
 	public String pwd = "Bootcamp$123";
+	public String browserName;
 
 	@BeforeSuite
 	public void beforeSuite() {
@@ -35,20 +31,10 @@ public class PreAndPost extends WebDriverServiceImpl {
 		startTestModule(nodes);// each data row -> one testcase
 		test.assignAuthor(authors);
 		test.assignCategory(category);
-		startApp("firefox");
+		startApp(browserName);
 
-		/*commented on 5Dec for using multiple browser
-		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--disable-notifications");
-		webdriver = new ChromeDriver(options);		
-		driver = new EventFiringWebDriver(webdriver);
-		driver.register(this);
-		driver.manage().window().maximize();
-		driver.get(prop.getProperty("URL"));
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-*/
 	}
+
 
 	@AfterMethod
 	public void afterMethod() {
@@ -60,9 +46,10 @@ public class PreAndPost extends WebDriverServiceImpl {
 		endResult();// write report
 	}
 
-	@DataProvider(name = "fetchData", indices = 0)
+	@DataProvider(name = "fetchData")
 	public Object[][] getData() {
 		return DataInputProvider.getSheet(dataSheetName);
+ 
 	}
 
 }

@@ -5,11 +5,20 @@
 		<classes>
 			<class name="testcases.TC001" />
 			<class name="testcases.SFO54_CreateNewCMS" />
+			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
+			
+			<!--  
+			<class name="testcases.SFO54_CreateNewCMS" />
+			<class name="testcases.SF0100_LeadScenario_E2E" />
+			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
+			<class name="testcases.SFO54_CreateNewCMS" />
+			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
 			<class name="testcases.SF0100_LeadScenario_E2E" />
 			<class name="testcases.TC2_NewOpportunity" />
 			<class name="testcases.TC3_VerifySorting" />
 			<class name="testcases.TC4_CreateTask" />
 			<class name="testcases.TC5_CaseWithoutMandatory" />
+			 -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
