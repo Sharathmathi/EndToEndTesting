@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" verbose="6">
-	<test thread-count="5" name="Test">
+	<test thread-count="5" name="chromeTest">
+		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="testcases.TC001" />
 			<class name="testcases.SFO54_CreateNewCMS" />
-			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
-			
-			<!--  
-			<class name="testcases.SFO54_CreateNewCMS" />
-			<class name="testcases.SF0100_LeadScenario_E2E" />
-			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
-			<class name="testcases.SFO54_CreateNewCMS" />
-			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
-			<class name="testcases.SF0100_LeadScenario_E2E" />
-			<class name="testcases.TC2_NewOpportunity" />
-			<class name="testcases.TC3_VerifySorting" />
-			<class name="testcases.TC4_CreateTask" />
-			<class name="testcases.TC5_CaseWithoutMandatory" />
-			 -->
 		</classes>
 	</test> <!-- Test -->
+
+	<test thread-count="5" name="Firefoxtest">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="testcases.SFO54_CreateNewCMS" />
+			<class name="testcases.SFO54_CreateNewCMS_DataParameterized" />
+		</classes>
+	</test> <!-- Test -->
+
+
 </suite> <!-- Suite -->

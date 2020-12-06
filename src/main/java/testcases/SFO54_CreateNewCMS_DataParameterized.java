@@ -12,7 +12,6 @@ public class SFO54_CreateNewCMS_DataParameterized extends PreAndPost {
 	@BeforeTest
 	public void setData() {
 		testCaseName = "SFO54";
-		browserName="FireFox";
 		testDescription = "Create New CMS";
 		authors = "Venkatesh";
 		category = "smoke";
