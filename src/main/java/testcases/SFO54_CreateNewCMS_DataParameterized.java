@@ -8,7 +8,7 @@ import pages.LoginPage;
 
 public class SFO54_CreateNewCMS_DataParameterized extends PreAndPost {
 
-	SFO54_CreateNewCMS_DataParameterized
+	 
 	@BeforeTest
 	public void setData() {
 		testCaseName = "SFO54";

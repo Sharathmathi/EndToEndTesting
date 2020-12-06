@@ -86,6 +86,31 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		return null;
 	}
 
+	public List<WebElement> locateElements(String locator, String locValue) {
+
+		try {
+
+			switch (locator) {
+			case "id": return driver.findElements(By.id(locValue));
+
+			case "name": return driver.findElements(By.name(locValue));
+
+			case "class": return driver.findElements(By.className(locValue));
+
+			case "link" : return driver.findElements(By.linkText(locValue));
+
+			case "xpath": return driver.findElements(By.xpath(locValue));	
+
+			default:
+				break;
+			}
+		} catch (NoSuchElementException e) {
+			reportStep("The element with locator "+locator+" not found.","FAIL");
+		} catch (WebDriverException e) {
+			reportStep("Unknown exception occured while finding "+locator+" with the value "+locValue, "FAIL");
+		}
+		return null;
+	}
 	public WebElement locateElement(String locValue) {
 		return driver.findElement(By.id(locValue));
 	}
@@ -291,11 +316,23 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 			} else {
 				reportStep("The expected text doesn't contain the actual " + expectedText, "FAIL");
 			}
- 
-		} catch (WebDriverException e) {
+ 		} catch (WebDriverException e) {
 			reportStep("Unknown exception occured while verifying the Text", "FAIL");
 		}
 	}
+	
+	public void verifyListContents(List<String> originalList, List<String> duplicateList) {
+		try {
+			if(originalList.equals(duplicateList)) {
+				reportStep("Elements are sorted in ascending order","PASS");
+			}else {
+				reportStep("Elements are not sorted in ascending order","FAIL");
+			}
+		} catch (WebDriverException e) {
+			reportStep("Unknown exception occured while verifying the list", "FAIL");
+		} 
+	}
+	
 
 	public void verifyExactAttribute(WebElement ele, String attribute, String value) {
 		try {
@@ -450,6 +487,22 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		}
 
 	}
+
+	
+	public void clickUsingJavascriptExecutor(WebElement ele)
+	{
+		try
+		{
+			driver.executeScript("arguments[0].click();", ele);
+			reportStep("The web element is clicked using executor","PASS");
+		}
+		catch(WebDriverException e)
+		{
+			reportStep("The web element could not be clicked using executor","FAIL");
+		}
+	}
+	
+	
 
 	@Override
 	public boolean verifyPartialTitle(String title) {
