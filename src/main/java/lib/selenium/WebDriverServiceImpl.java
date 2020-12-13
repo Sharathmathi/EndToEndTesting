@@ -29,6 +29,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -535,6 +536,17 @@ public class WebDriverServiceImpl extends WebDriverListener implements WebDriver
 		}catch (WebDriverException e) {
 			reportStep("The element: " + element + " could not be found.", "FAIL"); 
 		}
+	}
+
+	@Override
+	public void moveToElement(WebElement element) {
+		try {
+			Actions builder = new Actions(driver);
+			builder.moveToElement(element).click().perform();
+		}catch (WebDriverException e) {
+			reportStep("The element: " + element + " could not be found.", "FAIL");
+		}
+		
 	}
 
 }

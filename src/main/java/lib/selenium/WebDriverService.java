@@ -171,6 +171,13 @@ public interface WebDriverService {
 	 * @author Babu - TestLeaf
 	 */
 	public void closeAllBrowsers();
+	
+	/**
+	 * This method will moveToElement using actions
+	 * @author Babu - TestLeaf
+	 */
+
+	public void moveToElement(WebElement ele);
 
 }
 

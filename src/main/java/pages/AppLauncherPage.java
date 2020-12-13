@@ -34,4 +34,10 @@ public class AppLauncherPage extends PreAndPost {
 
 	}
 
+	public ServiceConsolePage clickServiceConsole() {
+		// TODO Auto-generated method stub
+		click(locateElement("xpath","//p[text()='ServicePage.java']"));
+		return new ServiceConsolePage(driver, test);
+	}
+
 }
